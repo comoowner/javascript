@@ -28,6 +28,9 @@ const quotes = [
     },
     {
     quote: "A cockroach can live several weeks without its head."
+    },
+    {
+      quote: "Uranus was discovered before Antarctica."
     }
   ];
   
