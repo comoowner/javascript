@@ -25,11 +25,7 @@
 
 
 
-    const player = {
-    name : tomato,
-    color : red,
-    food : true,
-    }; (player=object, name color=porperty)
+    
 
     console.log(player);
     console.log(player.name); => tomato
@@ -121,7 +117,7 @@
     - 첫번째 element만 가져옴
     - 조건에 맞는 세개 다 가져오고 싶으면 querySelectorAll
     ⇒ 세개의 h1이 들어있는 array를 가져다 줌
-    - querySelector("#hello); 와 getElementById("hello"); 는 같은 일을 하는 것임
+    - querySelector(#hello); 와 getElementById("hello"); 는 같은 일을 하는 것임
     하지만 후자는 하위요소 가져오는 것을 못하므로 전자만 쓸거다
 3.3Events
     - 지금 js파일이 있기 때문에 js를 통해 html의 내용을 가져올 수 있는 거임
@@ -201,6 +197,7 @@
     만약있다면 toggle 이 clicked를 제거해준다
     만약 class name이 존재하지 않는다면 toggle은 classname 추가
 4.2
+
     
     function onLoginSubmit(event){
     event.preventDefault(); // 브라우저가 기본 동작을 실행하지 못하게 막기 // event object는 preventDefault함수를 기본적으로 갖고 있음
@@ -215,3 +212,72 @@
 
     이 preventDefault 함수는 EventListener 함수의 '첫 번째 argument' 안에 있는 함수이다. 첫 arument는 지금 막 벌어진 event들에 대한 정보를 갖고 있다.
     JS는(기본적으로)argument를 담아서 함수를 호출하는데, 이 argument가 기본 정보들을 제공하고 있다. ex) 누가 submit주체인지, 몇 시에 submit을 했는지 등등 콘솔에 출력해보면 알 수 있음
+
+html, css 질문
+    html약자
+        HyperText Markup Language
+        하이퍼텍스트:텍스트가 링크로 연결되는 형태, 비선형적
+        마크업 언어:문서가 화면에 표시되는 형식을 나타내는 언어(ex태그)
+        프로그래밍 언어와의 차이:동적 언어가 아니라 상호작용이 안됨
+    doctype역할 미선언시 일어나는일
+        이게 html으로 작성됐다는걸 선언 및 html의 버전을 알려줌, 표준모드로 실행
+        미선언시 호환모드(과거 웹표준방식으로 작성되지 않은 코드를 실행하기 위한 모드)로 해석해 이상한 렌더링 결과, 레이아웃 변화, 스타일 적용의 차이 등의 문제
+        렌더링:마크업 언어로 작성된 html, 프로그래밍 언어로 작성된 js 등을 해석해서 웹페이지에 표현하는것
+    <head>태그 안에 들어가는 것들
+        body태그는 웹페이지에 뜨는 컨텐츠가 들어간다면 head에는 css,js를 연결, title표시 meta로 사이트에서 검색할때 페이지설명 등 외부 리소스와 메타정보
+        <meta> 태그: 이 태그는 웹 페이지에 대한 메타 정보를 제공합니다. 예를 들어, 문자 인코딩, 뷰포트 설정, 검색 엔진을 위한 페이지 설명 등이 있습니다.
+        <title> 태그: 이 태그는 웹 페이지의 제목을 지정합니다. 웹 브라우저의 타이틀 바나 탭에 표시됩니다.
+        <link> 태그: 이 태그는 외부 CSS 파일, 파비콘(브라우저 탭에 표시되는 아이콘) 및 웹 페이지에서 사용하는 다른 외부 리소스를 참조하는 데 사용됩니다.
+        <script> 태그: 이 태그는 클라이언트 측 스크립팅을 위해 JavaScript 코드를 포함하거나 외부 JavaScript 파일을 참조하는 데 사용됩니다.
+        <style> 태그: 이 태그는 현재 웹 페이지에만 적용되는 인라인 CSS 스타일을 정의하는 데 사용됩니다.
+    웹 접근성
+        장애인에게 동등한환경 제공위해 사이트를 올바르게 설계 스크린 리더 소프트웨어 화면, 확대 도구, 음성 인식
+    시멘틱 웹
+        기존엔 사람을 위한 자연어로 코드를 짜서 컴퓨터가 의미를 이해하지 않고 그대로 출력
+        시멘틱 웹을 구성하면 div idheader를 header로 작성하는것처럼 컴터가 의미를 알수있게됨
+        그래서 컴퓨터가 정보를 추출해석가공가능
+    뷰포트
+        웹 페이지의 크기 즉 사용자가 보는 영역
+        컴퓨터만 있을땐 뷰포트 고려할필요x 고정된 크기
+        근데 폰은 다 안보임 억지로 작은화면에 쑤셔넣으면 너무 작아짐
+        meta name="viewport"
+    float : 태그를 수평정렬
+        img {float:left;} img를왼쪽에. <p>는 block임에도 이미지옆에글자
+        float:right하면 맨오른쪽부터 순서대로
+        자손에 float 속성을 적용하면 부모의 overflow:hidden 적용해야됨
+        원래는 img옆에 글자넣기위해 만들어졌지만 지금은 레이아웃 구성
+    벤더 프리픽스
+        크롬, 파폭 등의 공급업체에서 css 표준에 없는 새로운 기능을 사용할때 사용
+        div {-ms-transition-duration:1s;} 옛날엔 border-radius도 벤더프리픽스 사용해야했음
+    레이아웃 : 사용자가 볼 화면을 구성
+      웹 폰트 1. #title{font-family:"a","b",...}
+              2. <link href="폰트사이트" rel="stylesheet" type="text/css" />
+      중앙정렬 header{width:960px; margin:0 auto}
+    반응형 웹디자인
+      폰으로보면 가로스크롤 or 글자너무작다
+      각 크기마다 웹사이트 별도 구축? 미쳤나
+      하나의 웹사이트를 구축하여 다양한 디바이스의 화면 해상도에 최적화된 웹사이트를 제공
+    수평 수직 정렬 https://poiemaweb.com/css3-centering
+    display:flex https://heropy.blog/2018/11/24/css-flexible-box/
+    transition: transition: property duration function delay
+      
+
+
+    
+
+js 질문
+    4.콜백 함수
+        1. 콜스택이 비워지면 eventloop를 통해 microtask queue(promise 등)를 들어온 순서대로 콜스택에 담는다.
+        2.macrotask(setTimeout(), appendchild()등 콜백함수)를 하나만 실행
+        3. 매크로태스크 큐에서 들어온 순서대로 꺼내 실행한다.(예: 스크립트를 실행)
+        4. 모든 마이크로태스크를 실행한다.이 작업은 마이크로태스크 큐가 빌 때까지 진행되며, 
+        태스크는 오래된 순서대로 처리된다. 렌더링할 것이 있으면 처리합니다.
+        5. 매크로태스크 큐가 비어있으면 새로운 매크로태스크가 나타날 때까지 기다린다.
+        6. 3번으로 돌아간다.
+
+    5.클로저
+      클로저에서 변수가 외부에서 참조되는 이유
+        함수 호출이 종료되면 함수 컨텍스트가 콜스택에서 없어지고 내부 lexicalEnvironment는 GC된다
+        그러나 내부함수에서 return처럼 클로저를 활용하면
+        내부함수의 [[Environment]]프로퍼티(outerEnvironmentReference)에서 호출가능성이 있는 값을 GC하지않는다
+
