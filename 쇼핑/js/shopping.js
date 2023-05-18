@@ -11,49 +11,102 @@ const carLists=document.querySelector("#car-lists")
 const cars=[
     {
         id:1,
-        name:"bmw",
+        name:"bmw1",
         image:"bmw.png",
         price:999999,
     },
     {
         id:2,
-        name:"bmw",
+        name:"bmw2",
         image:"bmw.png",
         price:999999,
     },
     {
         id:3,
-        name:"bmw",
+        name:"bmw3",
         image:"bmw.png",
         price:999999,
     },
     {
         id:4,
-        name:"bmw",
+        name:"bmw4",
         image:"bmw.png",
         price:999999,
     },
     {
         id:5,
-        name:"bmw",
+        name:"bmw5",
         image:"bmw.png",
         price:999999,
     },
     {
         id:6,
-        name:"bmw",
+        name:"bmw6",
         image:"bmw.png",
         price:999999,
     },
 ];
+const cartItems=document.querySelector("#cart-items");
+const cartTotal=document.querySelector("#cart-total");
 
-const addCart=function(event){
-    event.preventDefault();
-    console.log(event.target.parentElement.children[1].innerText)
+let cart=[]
+
+/*const handlePlusBtn=function(event){
+  console.dir(event.target)
+}*/
+
+const handleDeleteBtn=function(event){
+  event.target.parentElement.remove()
+  console.log(sum)
 }
 
+const showTotalPrice=function(){
+  let sum=0
+  cartItems.innerHTML=""
+  cart.forEach(car=>{
+  const li=document.createElement("li")
+  /*const plusButton=document.createElement("button")
+  plusButton.innerText="+"
+  const minusButton=document.createElement("button")
+  minusButton.innerText="-"*/
+  const deleteButton=document.createElement("button")
+  deleteButton.innerText="❌"
+  li.innerText=`${car.name} : ${car.price}x${car.quantity}`
+  li.appendChild(deleteButton)
+  //li.appendChild(plusButton)
+  //li.appendChild(minusButton)
+  cartItems.appendChild(li)
+  sum+=car.price*car.quantity
+  //plusButton.addEventListener("click", handlePlusBtn)
+  //minusButton.addEventListener("click", handleMinusBtn)
+  deleteButton.addEventListener("click", handleDeleteBtn)
+  })
+  cartTotal.innerText=`Total Price : ${sum}$`
+}
+
+const updateCart = function(index) {
+    return function(event) {
+      event.preventDefault();
+  
+      const car = cars[index];
+      const existingItem = cart.find(item => item.id === car.id);
+  
+      if (existingItem) {
+        existingItem.quantity++;
+      } else {
+        cart.push({
+          id: car.id,
+          name: car.name,
+          price: car.price,
+          quantity: 1
+        });
+      }
+      showTotalPrice();
+    };
+  };
+
 const createCarLists=function(){
-    cars.forEach((value)=>{
+    cars.forEach((value, index)=>{
     const car=document.createElement("div")
     const img=document.createElement("img")
     img.src=`img/${value.image}`
@@ -70,9 +123,11 @@ const createCarLists=function(){
     car.appendChild(price)
     car.appendChild(button)
     carLists.appendChild(car)
-    button.addEventListener("click", addCart)
+    button.addEventListener("click", updateCart(index))
     })
 }
 createCarLists()
+
+
 
 
